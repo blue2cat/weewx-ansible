@@ -1,0 +1,4 @@
+- hosts: all
+  roles:
+    - tools
+    - s3cmd

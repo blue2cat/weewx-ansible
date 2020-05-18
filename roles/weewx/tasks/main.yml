@@ -1,0 +1,91 @@
+---
+
+- include_vars: secrets.yml
+- include_vars: group_vars/all
+
+- name: add {{ weewx_user }} user
+  user:
+    name: "{{ weewx_user }}"
+    shell: /bin/bash
+    state: present
+
+- name: download weewx binary
+  get_url:
+    url: http://weewx.com/downloads/weewx-{{ weewx_version }}.tar.gz
+    dest: /tmp
+    mode: 0777
+
+- name: expand archive
+  unarchive:
+    src: /tmp/weewx-{{ weewx_version }}.tar.gz
+    dest: /opt
+    remote_src: True
+
+- name: build 
+  command: ./setup.py build
+  args:
+    chdir: /opt/weewx-{{ weewx_version }}
+
+- name: create/overwrite config file from template
+  template:
+    src: weewx.conf.j2
+    dest: /home/{{ weewx_user }}/weewx.conf
+    owner: "{{ weewx_user }}"
+    mode: 0664
+
+- name: ensure there is an archive directory to hold the SQLite database
+  file:
+    path: /home/{{ weewx_user }}/archive
+    state: directory
+    mode: 0775
+
+- name: ensure there is an extensions directory in the weewx home
+  file:
+    path: /home/{{ weewx_user }}/extensions
+    state: directory
+    mode: 0775
+
+- name: clone weewx-S3upload into extensions directory
+  git:
+    repo: https://github.com/wmadill/weewx-S3upload.git
+    dest: /home/{{ weewx_user }}/extensions/weewx-S3upload
+    force: yes
+
+- name: copy s3 skins
+  command: cp -rp ./extensions/weewx-S3upload/skins/S3upload ./skins/
+  args:
+    chdir: /home/{{ weewx_user }}
+
+- name: copy s3 user/S3upload.py
+  command: cp ./extensions/weewx-S3upload/bin/user/S3upload.py ./bin/user/
+  args:
+    chdir: /home/{{ weewx_user }}
+
+- name: set owner on {{ weewx_user }} home directory
+  file:
+    path: /home/{{ weewx_user }}
+    owner: "{{ weewx_user }}"
+    group: "{{ weewx_user }}"
+    recurse: yes
+
+- name: create init.d startup script
+  command: cp /home/{{ weewx_user }}/util/init.d/weewx.debian /etc/init.d/weewx
+  notify:
+    restart weewx
+
+- name: set permissions on init.d startup script
+  command: chmod +x /etc/init.d/weewx
+  notify:
+    restart weewx
+
+- name: configure init.d startup script
+  command: update-rc.d weewx defaults 98
+  notify:
+    restart weewx
+
+- name: modify sudoers file to allow {{ weewx_user }} to stop/start service
+  blockinfile:
+    path: /etc/sudoers
+    block: |
+      %weewx ALL=NOPASSWD: /usr/sbin/service weewx stop
+      %weewx ALL=NOPASSWD: /usr/sbin/service weewx start

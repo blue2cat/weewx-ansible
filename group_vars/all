@@ -1,0 +1,8 @@
+---
+weewx_user: weewx
+
+s3_bucket: weewxweather
+
+weewx_version: 4.0.0
+
+weewx_timezone: US/Seattle

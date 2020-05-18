@@ -1,0 +1,17 @@
+---
+# install and configure AWS s3 command line tool
+
+- include_vars: secrets.yml
+
+- name: install s3cmd with pip
+  pip:
+    name: s3cmd
+
+- name: configure s3cmd with AWS credentials from ansible-vault
+  template:
+    src: s3cfg.j2
+    dest: /home/{{ weewx_user }}/.s3cfg
+    owner: "{{ weewx_user }}"
+    group: "{{ weewx_user }}"
+    mode: 0600
+

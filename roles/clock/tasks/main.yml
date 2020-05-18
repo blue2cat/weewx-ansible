@@ -1,0 +1,19 @@
+---
+- name: remove fake clock
+  package:
+    name: fake-hwclock
+    state: absent
+
+- name: set the timezone
+  shell: timedatectl set-timezone {{ ntp_timezone }}
+
+- name: install ntp
+  package:
+    name: ntp
+    state: present
+
+- name: Ensure NTP is running and enabled
+  service:
+    name: ntp
+    state: started
+    enabled: yes

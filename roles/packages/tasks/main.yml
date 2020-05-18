@@ -1,0 +1,57 @@
+---
+
+- name: install package python3-configobj
+  package: 
+    name: python3-configobj
+    state: present
+
+- name: install package python3-cheetah
+  package: 
+    name: python3-cheetah
+    state: present
+
+- name: install package python3-imaging
+  package: 
+    name: python3-imaging
+    state: present
+
+- name: install package python3-serial
+  package: 
+    name: python3-serial
+    state: present
+
+- name: install package python3-usb
+  package: 
+    name: python3-usb
+    state: present
+
+- name: install package mysql-client
+  package: 
+    name: mysql-client
+    state: present
+
+- name: install package python3-mysqldb
+  package: 
+    name: python3-mysqldb
+    state: present
+
+- name: install package ftp
+  package: 
+    name: ftp
+    state: present
+
+- name: install package python3-dev
+  package: 
+    name: python3-dev
+    state: present
+
+- name: install package python3-pip
+  package: 
+    name: python3-pip
+    state: present
+
+- name: install pip package pyephem
+  package:
+    name: python3-ephem
+    state: present
+

@@ -1,0 +1,5 @@
+---
+- name: restart weewx
+  service:
+    name: weewx
+    state: restarted
