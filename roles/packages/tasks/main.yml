@@ -10,9 +10,9 @@
     name: python3-cheetah
     state: present
 
-- name: install package python3-imaging
+- name: install package python3-pil
   package: 
-    name: python3-imaging
+    name: python3-pil
     state: present
 
 - name: install package python3-serial
@@ -25,6 +25,11 @@
     name: python3-usb
     state: present
 
+- name: install package python3-pip
+  package: 
+    name: python3-pip
+    state: present
+    
 - name: install package mysql-client
   package: 
     name: mysql-client
@@ -45,10 +50,6 @@
     name: python3-dev
     state: present
 
-- name: install package python3-pip
-  package: 
-    name: python3-pip
-    state: present
 
 - name: install pip package pyephem
   package:

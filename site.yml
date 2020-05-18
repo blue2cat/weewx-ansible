@@ -1,6 +1,6 @@
 ---
-- include: clock.yml
-- include: packages.yml
-- include: weewx.yml
-- include: s3cmd.yml
-- include: backup.yml
+- import_playbook: clock.yml
+- import_playbook: packages.yml
+- import_playbook: weewx.yml
+- import_playbook: s3cmd.yml
+- import_playbook: backup.yml
