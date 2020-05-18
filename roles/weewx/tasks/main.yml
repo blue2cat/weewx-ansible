@@ -1,6 +1,6 @@
 ---
 
-- include_vars: secrets.yml
+#- include_vars: secrets.yml
 - include_vars: group_vars/all
 
 - name: add {{ weewx_user }} user
@@ -45,21 +45,21 @@
     state: directory
     mode: 0775
 
-- name: clone weewx-S3upload into extensions directory
-  git:
-    repo: https://github.com/wmadill/weewx-S3upload.git
-    dest: /home/{{ weewx_user }}/extensions/weewx-S3upload
-    force: yes
+#- name: clone weewx-S3upload into extensions directory
+#  git:
+#    repo: https://github.com/wmadill/weewx-S3upload.git
+#    dest: /home/{{ weewx_user }}/extensions/weewx-S3upload
+#    force: yes
 
-- name: copy s3 skins
-  command: cp -rp ./extensions/weewx-S3upload/skins/S3upload ./skins/
-  args:
-    chdir: /home/{{ weewx_user }}
+#- name: copy s3 skins
+#  command: cp -rp ./extensions/weewx-S3upload/skins/S3upload ./skins/
+#  args:
+#   chdir: /home/{{ weewx_user }}
 
-- name: copy s3 user/S3upload.py
-  command: cp ./extensions/weewx-S3upload/bin/user/S3upload.py ./bin/user/
-  args:
-    chdir: /home/{{ weewx_user }}
+#- name: copy s3 user/S3upload.py
+ # command: cp ./extensions/weewx-S3upload/bin/user/S3upload.py ./bin/user/
+ # args:
+  #  chdir: /home/{{ weewx_user }}
 
 - name: set owner on {{ weewx_user }} home directory
   file:
