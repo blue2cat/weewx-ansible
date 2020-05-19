@@ -1,4 +1,4 @@
-# WeeWX Server
+# WeeWX for Ansible
 Ansible playbook for setting up a server for running [weeWX](http://www.weewx.com/) software for a weather station.
 
 This has been tested on Ubuntu:latest -- 2004
