@@ -1,0 +1,7 @@
+- name: install nginx
+  package: 
+    name: nginx
+    state: present
+    
+- name: nginx config 
+  command: sudo cp /home/{{ weewx_user }}/util/apache/conf.d/weewx.conf /etc/nginx/conf.d

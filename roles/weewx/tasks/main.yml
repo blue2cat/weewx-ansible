@@ -22,7 +22,12 @@
     remote_src: True
 
 - name: build 
-  command: ./setup.py build
+  command: python3 ./setup.py build
+  args:
+    chdir: /opt/weewx-{{ weewx_version }}
+
+- name: install
+  command: sudo python3 ./setup.py install
   args:
     chdir: /opt/weewx-{{ weewx_version }}
 

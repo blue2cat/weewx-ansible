@@ -1,7 +1,7 @@
 # WeeWX Server
 Ansible playbook for setting up a server for running [weeWX](http://www.weewx.com/) software for a weather station.
 
-I have this running on a Raspberry Pi with Raspbian Jessie - so this is the only place the playbook has been tested.
+This has been tested on Ubuntu:latest -- 2004
 
 ### Publish files to S3
 To use the S3 upload tool, uncomment the S3 upload line in [site.yml](./site.yml). This particular configuration of weeWX will publish web files to an AWS S3 bucket running as a static website, instead of using its own web server.  It uses the [weewx-S3upload extension](https://github.com/wmadill/weewx-S3upload) together with the [s3cmd - S3 command-line tool](http://s3tools.org/s3cmd).
