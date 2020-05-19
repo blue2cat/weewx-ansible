@@ -1,4 +1,4 @@
-# WeeWX Server
+# WeeWX Ansible Role
 Ansible playbook for setting up a server for running [weeWX](http://www.weewx.com/) software for a weather station.
 
 I have this running on a Raspberry Pi with Raspbian Jessie - so this is the only place the playbook has been tested.
