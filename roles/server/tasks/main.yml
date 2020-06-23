@@ -1,7 +1,9 @@
+- include_vars: group_vars/all
+
 - name: install nginx
   package: 
-    name: nginx
+    name: apache2
     state: present
     
 - name: nginx config 
-  command: sudo cp /home/{{ weewx_user }}/util/apache/conf.d/weewx.conf /etc/nginx/conf.d
+  command: sudo cp /home/{{ weewx_user }}/util/apache/conf.d/weewx.conf /etc/apache2/conf.d
