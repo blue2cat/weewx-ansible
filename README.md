@@ -1,6 +1,6 @@
 # WeeWX for Ansible
 Ansible playbook for setting up a server for running [weeWX](http://www.weewx.com/) software for a weather station.
-
+[![Build Status](https://travis-ci.org/blue2cat/weewx-ansible.svg?branch=master)](https://travis-ci.org/blue2cat/weewx-ansible)
 This has been tested on Ubuntu:latest -- 2004
 
 ### Publish files to S3
