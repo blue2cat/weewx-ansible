@@ -18,8 +18,8 @@ env:
     version: trusty
   - distribution: debian
     version: stretch
-  - distribution: debian
-    version: jessie
+  #- distribution: debian
+  #  version: jessie
 
 before_install:
   - "sudo docker pull ${distribution}:${version}"
