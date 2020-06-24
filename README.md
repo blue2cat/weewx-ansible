@@ -1,10 +1,11 @@
 # WeeWX for Ansible
 
-[![Build Status](https://travis-ci.org/blue2cat/weewx-ansible.svg?branch=master)](https://travis-ci.org/blue2cat/weewx-ansible)
+
 
 Ansible playbook for setting up a server for running [weeWX](http://www.weewx.com/) software for a weather station.
 
-This has been tested on Ubuntu:latest -- 2004
+All commits are tested with Tavis CI:
+[![Build Status](https://travis-ci.org/blue2cat/weewx-ansible.svg?branch=master)](https://travis-ci.org/blue2cat/weewx-ansible)
 
 ### Publish files to S3
 To use the S3 upload tool, uncomment the S3 upload line in [site.yml](./site.yml). This particular configuration of weeWX will publish web files to an AWS S3 bucket running as a static website, instead of using its own web server.  It uses the [weewx-S3upload extension](https://github.com/wmadill/weewx-S3upload) together with the [s3cmd - S3 command-line tool](http://s3tools.org/s3cmd).
