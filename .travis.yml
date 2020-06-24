@@ -13,6 +13,8 @@ env:
   - distribution: fedora
     version: 24
   - distribution: ubuntu
+    version: latest
+  - distribution: ubuntu
     version: xenial
   - distribution: ubuntu
     version: trusty
@@ -24,7 +26,7 @@ env:
 before_install:
   - "sudo docker pull ${distribution}:${version}"
   - "sudo docker build --no-cache --rm --file=travis/Dockerfile.${distribution}-${version} --tag=${distribution}-${version}:ansible travis"
-  - sudo apt-get update -qq
+
 
 script:
   - container_id=$(mktemp)
