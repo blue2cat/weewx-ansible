@@ -1,10 +1,11 @@
-# WeeWX for Ansible
+# Ansible for Weewx
+
+### About 
+weewx-ansible is a Ansible playbook for automatically installing [weeWx](http://weewx.com) on Linux. [Take a look the Travis CI page to see all tested versions](https://travis-ci.org/github/blue2cat/weewx-ansible). 
 
 
 
-Ansible playbook for setting up a server for running [weeWX](http://www.weewx.com/) software for a weather station.
-
-All commits are tested with Tavis CI:
+Travis CI:
 
 [![Build Status](https://travis-ci.org/blue2cat/weewx-ansible.svg?branch=master)](https://travis-ci.org/blue2cat/weewx-ansible)
 
