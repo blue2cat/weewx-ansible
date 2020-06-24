@@ -27,7 +27,8 @@
     chdir: /opt/weewx-{{ weewx_version }}
 
 - name: install
-  command: sudo python3 ./setup.py install
+  become: true 
+  command: python3 ./setup.py install
   args:
     chdir: /opt/weewx-{{ weewx_version }}
 
