@@ -12,7 +12,20 @@ Travis CI:
 
 ### Usage
 To install weeWx:
+
+#### Create a Hosts File for Ansible Automation
+
 ```
-ansible-playbook -i hosts site.yml --user=<someuser>
+> sudo nano hosts.txt
+```
+
+```
+#hosts.txt
+[weewx]
+172.17.122.80 ansible_user=<user> ansible_ssh_private_key_file=~/.ssh/id_rsa ansible_become=yes
+```
+
+```
+> ansible-playbook -i hosts site.yml --user=<someuser>
 ```
 
