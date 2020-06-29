@@ -11,4 +11,7 @@ weewx_config: weewx.conf
 #specify the timezone
 weewx_timezone: US/Seattle
 
+#backup. set to true to backup the weewx config
+backup: false
+
 

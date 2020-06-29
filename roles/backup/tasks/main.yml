@@ -1,5 +1,5 @@
 ---
-
+- include_vars: group_vars/all
 - name: create backup directory
   file:
     path: /home/{{ weewx_user }}/backup
@@ -7,11 +7,13 @@
     owner: "{{ weewx_user }}"
     group: "{{ weewx_user }}"
     mode: 0775
+  when: backup == 'true'
 
 - name: clone weewx_backup into backup directory
   git:
-    repo: https://github.com/blue2cat/weewx.backup.git
+    repo: https://github.com/digitalbear/weewx.backup.git
     dest: /home/{{ weewx_user }}/backup
+  when: backup == 'true'
 
 - name: configure crontab to run backup script every day around 2 am
   cron:
@@ -20,3 +22,4 @@
     minute: "15"
     user: "{{ weewx_user }}"
     job: /home/{{ weewx_user }}/backup/weewx_backup.sh > /home/{{ weewx_user }}/backup/weewx_backup.log 2>&1
+  when: backup == 'true'
