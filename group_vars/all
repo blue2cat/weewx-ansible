@@ -1,4 +1,6 @@
 ---
+#weewx-ansible by Gavin S. 
+
 #user to install weewx under
 weewx_user: weewx
 
@@ -10,5 +12,8 @@ weewx_config: weewx.conf
 
 #specify the timezone
 weewx_timezone: US/Seattle
+
+#backup. set to true to backup the weewx config automatically 
+backup: false
 
 
