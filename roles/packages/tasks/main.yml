@@ -51,3 +51,8 @@
     name: python3-ephem
     state: present
 
+- name: install pip package wget
+  package:
+    name: wget
+    state: present
+

@@ -1,10 +1,14 @@
 ---
+#user to install weewx under
 weewx_user: weewx
 
-s3_bucket: weewxweather
-
+#current version of weewx 
 weewx_version: 4.1.1
 
+#config file for weewx to use. 
+weewx_config: weewx.conf
+
+#specify the timezone
 weewx_timezone: US/Seattle
 
 
