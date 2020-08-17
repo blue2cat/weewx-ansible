@@ -1,2 +1,4 @@
 *.retry
 vault_pass.txt
+hosts.txt
+weewx.conf
