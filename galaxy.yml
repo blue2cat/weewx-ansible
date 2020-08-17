@@ -1,9 +1,8 @@
-name: weewx
 readme: README.md
 authors:
 - blue2cat
 description: A Ansible role to deploy WeeWX automatically
-license_file: LICENSE.md
+license_file: LICENSE
 tags:
   - weewx
 repository: https://github.com/blue2cat/weewx-ansible
