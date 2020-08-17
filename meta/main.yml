@@ -1,0 +1,26 @@
+  
+role_name: weewx
+author: Gavin
+description: Ansible role to install weewx
+
+issue_tracker_url: https://github.com/blue2cat/weewx-ansible/issues
+
+
+license: apache 2.0
+
+min_ansible_version: 1.8
+
+github_branch: master
+
+
+platforms:
+ - name: Ubuntu
+   versions:
+   - 1804
+
+
+
+galaxy_tags: []
+
+
+dependencies: []
