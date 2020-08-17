@@ -1,7 +1,0 @@
----
-- import_playbook: clock.yml
-- import_playbook: packages.yml
-- import_playbook: weewx.yml
-#- import_playbook: s3cmd.yml
-- import_playbook: backup.yml
-# import_playbook: server.yml

@@ -1,5 +1,4 @@
 ---
-
 - name: install package python3-configobj
   package: 
     name: python3-configobj
@@ -45,7 +44,6 @@
     name: python3-dev
     state: present
 
-
 - name: install pip package pyephem
   package:
     name: python3-ephem
@@ -55,4 +53,3 @@
   package:
     name: wget
     state: present
-

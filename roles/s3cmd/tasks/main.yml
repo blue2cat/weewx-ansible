@@ -1,6 +1,5 @@
 ---
 # install and configure AWS s3 command line tool
-
 - include_vars: secrets.yml
 
 - name: install s3cmd with pip
@@ -14,4 +13,3 @@
     owner: "{{ weewx_user }}"
     group: "{{ weewx_user }}"
     mode: 0600
-

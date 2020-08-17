@@ -1,5 +1,5 @@
 role_name: weewx
-author: Gavin
+author: blue2cat
 description: Ansible role to install weewx
 
 issue_tracker_url: https://github.com/blue2cat/weewx-ansible/issues

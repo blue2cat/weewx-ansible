@@ -7,6 +7,10 @@ weewx_user: weewx
 #current version of weewx 
 weewx_version: 4.1.1
 
+
+#use config file. If this option is not set, the current weewx config file will be used. 
+use_config = false
+
 #config file for weewx to use. 
 weewx_config: weewx.conf
 

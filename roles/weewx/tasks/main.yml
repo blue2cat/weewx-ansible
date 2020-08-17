@@ -3,7 +3,6 @@
 #- include_vars: secrets.yml
 - include_vars: group_vars/all
 
-
 - name: add {{ weewx_user }} user
   user:
     name: "{{ weewx_user }}"
