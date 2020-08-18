@@ -1,7 +1,8 @@
 - hosts: all
   roles:
-    #- backup
+    - backup
     - clock
     - tools
     - packages
     - weewx
+    - server

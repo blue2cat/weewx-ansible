@@ -4,6 +4,8 @@
   package: 
     name: nginx
     state: present
+  when: server == 'true'
     
 - name: nginx config
   command: sudo cp /home/{{ weewx_user }}/util/apache/conf.d/weewx.conf /etc/apache2/conf.d/weewx.conf
+  when: server == 'true'

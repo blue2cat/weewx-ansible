@@ -20,4 +20,8 @@ weewx_timezone: US/Seattle
 #backup. set to true to backup the weewx config automatically 
 backup: false
 
+server: false
+
+no_c: false
+
 

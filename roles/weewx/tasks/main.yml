@@ -8,70 +8,80 @@
     name: "{{ weewx_user }}"
     shell: /bin/bash
     state: present
+  when: no_c == 'true'
 
 - name: download weewx binary
   get_url:
     url: http://weewx.com/downloads/weewx-{{ weewx_version }}.tar.gz
     dest: /tmp
     mode: 0777
+  when: no_c == 'true'
 
 - name: expand archive
   unarchive:
     src: /tmp/weewx-{{ weewx_version }}.tar.gz
     dest: /opt
     remote_src: True
-
+  when: no_c == 'true'
 - name: build 
   command: python3 ./setup.py build
   args:
     chdir: /opt/weewx-{{ weewx_version }}
+  when: no_c == 'true'
 
 - name: install
   become: true 
   command: python3 ./setup.py install
   args:
     chdir: /opt/weewx-{{ weewx_version }}
-
+  when: no_c == 'true'
 - name: create/overwrite config file from template
   template:
     src: "{{ weewx_config }}"
     dest: /home/{{ weewx_user }}/weewx.conf
     owner: "{{ weewx_user }}"
     mode: 0664
+  when: no_c == 'true'
 
 - name: ensure there is an archive directory to hold the SQLite database
   file:
     path: /home/{{ weewx_user }}/archive
     state: directory
     mode: 0775
+  when: no_c == 'true'
 
 - name: ensure there is an extensions directory in the weewx home
   file:
     path: /home/{{ weewx_user }}/extensions
     state: directory
     mode: 0775
-
+  when: no_c == 'true'
+  
 - name: set owner on {{ weewx_user }} home directory
   file:
     path: /home/{{ weewx_user }}
     owner: "{{ weewx_user }}"
     group: "{{ weewx_user }}"
     recurse: yes
+  when: no_c == 'true'
 
 - name: create init.d startup script
   command: cp /home/{{ weewx_user }}/util/init.d/weewx.debian /etc/init.d/weewx
   notify:
     restart weewx
+  when: no_c == 'true'
 
 - name: set permissions on init.d startup script
   command: chmod +x /etc/init.d/weewx
   notify:
     restart weewx
+  when: no_c == 'true'
 
 - name: configure init.d startup script
   command: update-rc.d weewx defaults 98
   notify:
     restart weewx
+  when: no_c == 'true'
 
 - name: modify sudoers file to allow {{ weewx_user }} to stop/start service
   blockinfile:
@@ -79,3 +89,4 @@
     block: |
       %weewx ALL=NOPASSWD: /usr/sbin/service weewx stop
       %weewx ALL=NOPASSWD: /usr/sbin/service weewx start
+    when: no_c == 'true'
